@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0d1726">
+<meta name="description" content="A Fearless Draft organizer for League of Legends coaching staff: live draft board, series-wide champion locks, pool-pressure forecast and pick/ban advice.">
+<title>Fearless Ledger</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">FL</span>
+    <div>
+      <h1>Fearless Ledger</h1>
+      <p class="sub">Draft board and series planner for Fearless Draft</p>
+    </div>
+  </div>
+  <div id="scoreline" class="scoreline" aria-live="polite"></div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" data-tab="draft" class="tab on" aria-selected="true">Draft</button>
+    <button role="tab" data-tab="prep" class="tab" aria-selected="false">Prep</button>
+    <button role="tab" data-tab="series" class="tab" aria-selected="false">Series</button>
+  </nav>
+</header>
+
+<main>
+  <!-- DRAFT -->
+  <section id="tab-draft" class="view on" role="tabpanel">
+    <div id="turn" class="turn" aria-live="polite"></div>
+    <div class="board">
+      <aside class="side blue" id="side-blue"></aside>
+      <div class="pool">
+        <div class="filters">
+          <input id="search" type="search" placeholder="Search champion  ( / )" autocomplete="off" aria-label="Search champion">
+          <div class="roles" id="role-filter" role="group" aria-label="Filter by role">
+            <button data-r="" class="chip on">All</button>
+            <button data-r="T" class="chip">Top</button>
+            <button data-r="J" class="chip">Jng</button>
+            <button data-r="M" class="chip">Mid</button>
+            <button data-r="B" class="chip">Bot</button>
+            <button data-r="S" class="chip">Sup</button>
+          </div>
+          <label class="toggle"><input type="checkbox" id="show-locked"> show locked</label>
+        </div>
+        <div id="grid" class="grid" aria-label="Champion pool"></div>
+        <div class="actions">
+          <button id="undo" class="btn">Undo <kbd>Bksp</kbd></button>
+          <button id="reset-game" class="btn ghost">Reset this game</button>
+          <span id="result-wrap" class="result-wrap"></span>
+        </div>
+      </div>
+      <aside class="side red" id="side-red"></aside>
+    </div>
+    <div class="lower">
+      <section class="card">
+        <h2>Advice for this turn</h2>
+        <p class="muted small">Scores mix your comfort picks, what the pick or ban takes away from the opponent, and how many games the lock will last.</p>
+        <ol id="advice" class="advice"></ol>
+      </section>
+      <section class="card">
+        <h2>Pool pressure</h2>
+        <p class="muted small">Comfort champions each player can still play. Counts after this game assume the current picks lock.</p>
+        <div id="pressure"></div>
+      </section>
+    </div>
+  </section>
+
+  <!-- PREP -->
+  <section id="tab-prep" class="view" role="tabpanel" hidden>
+    <div class="prep-grid">
+      <section class="card">
+        <h2>Series format</h2>
+        <div class="form-row">
+          <label>Format
+            <select id="f-format">
+              <option value="1">Best of 1</option>
+              <option value="3">Best of 3</option>
+              <option value="5">Best of 5</option>
+            </select>
+          </label>
+          <label>Fearless rule
+            <select id="f-fearless">
+              <option value="hard">Hard: picks lock for both teams</option>
+              <option value="soft">Soft: picks lock for the picking team</option>
+              <option value="off">Off: normal tournament draft</option>
+            </select>
+          </label>
+        </div>
+        <p class="muted small">Bans never carry over. Changing the format keeps the games already drafted.</p>
+        <div class="btn-row">
+          <button id="load-sample" class="btn">Load sample series</button>
+          <button id="new-series" class="btn ghost">New empty series</button>
+        </div>
+      </section>
+      <section class="card team-card" id="team-0"></section>
+      <section class="card team-card" id="team-1"></section>
+      <section class="card">
+        <h2>Burn list</h2>
+        <p class="muted small">Champions that sit in the opponent's comfort pools and in yours. Under Fearless, picking one early takes it from them for the rest of the series, so these are better picks than bans.</p>
+        <div class="form-row">
+          <label>Plan for
+            <select id="burn-team"></select>
+          </label>
+        </div>
+        <ol id="burn" class="advice"></ol>
+      </section>
+    </div>
+  </section>
+
+  <!-- SERIES -->
+  <section id="tab-series" class="view" role="tabpanel" hidden>
+    <section class="card">
+      <h2>Games</h2>
+      <div id="games"></div>
+    </section>
+    <section class="card">
+      <h2>Locked champions</h2>
+      <div id="locked-list"></div>
+    </section>
+    <section class="card">
+      <h2>Share and export</h2>
+      <div class="btn-row">
+        <button id="copy-link" class="btn">Copy share link</button>
+        <button id="dl-json" class="btn ghost">Download JSON</button>
+        <label class="btn ghost file">Import JSON<input type="file" id="ul-json" accept="application/json,.json" hidden></label>
+        <button id="dl-md" class="btn ghost">Download coach report (.md)</button>
+      </div>
+      <p id="share-msg" class="muted small" aria-live="polite"></p>
+      <pre id="report" class="report"></pre>
+    </section>
+  </section>
+</main>
+
+<footer class="foot">
+  Fearless Ledger is a fan-made coaching tool and is not endorsed by Riot Games. Champion names are used as text only.
+</footer>
+
+<script src="champions.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
