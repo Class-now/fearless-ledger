@@ -104,6 +104,8 @@ main { padding: 16px 20px 24px; max-width: 1400px; margin: 0 auto; }
 .champ.locked { background: #1e1a22; border-style: dashed; }
 .champ .lk { position: absolute; top: 5px; right: 6px; font-size: 10px; color: var(--warn); }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+#copy-draft-msg { margin: 8px 0; }
+#copy-draft-msg:empty { display: none; }
 .result-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-left: auto; }
 .done { color: var(--good); font-weight: 700; }
 

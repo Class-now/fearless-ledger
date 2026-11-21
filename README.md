@@ -16,7 +16,7 @@ Category: **League of Legends: Macro Scouting & Draft Management System** (Modul
 | "Who is running out of champions?" | **Pool pressure** shows, for every player on both teams, how many comfort champions are still playable now and after the current picks lock. Players down to two or fewer are flagged. |
 | Ban or pick? | Under Fearless a ban only lasts one game, while a pick takes a champion away for the rest of the series. **Advice for this turn** ranks options by your comfort, what the choice takes from the opponent, how flexible it is across open roles, and how many games the lock will last. When a ban target is also in your own pool, it tells you to pick it instead. |
 | Series prep | **Burn list**: champions that sit in both teams' pools, ranked by how much an early pick denies the opponent. |
-| Sharing with the staff | Copy a share link (the whole series lives in the URL), download or import JSON, or export a Markdown coach report with every game, notes and the remaining pools. |
+| Sharing with the staff | Copy the current draft as plain text, copy a share link (the whole series lives in the URL), download or import JSON, or export a Markdown coach report with every game, notes and the remaining pools. |
 
 ## Pools
 

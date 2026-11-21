@@ -79,6 +79,7 @@
 
   let S = load() || sampleSeries();
   let ui = { role: '', search: '', showLocked: false };
+  let copyRequest = 0;
 
   // ---------- persistence ----------
   function save() {
@@ -431,6 +432,9 @@
   function renderActions() {
     const g = game(), box = $('result-wrap');
     box.textContent = '';
+    copyRequest++;
+    $('copy-draft-msg').textContent = '';
+    $('copy-draft-text').hidden = true;
     if (!draftDone(g)) return;
     if (g.winner === null) {
       ['blue', 'red'].forEach(function (side) {
@@ -651,6 +655,40 @@
   }
   function renderReport() { $('report').textContent = report(); }
 
+  function draftText() {
+    const g = game(), lines = ['Game ' + (S.current + 1)];
+    ['blue', 'red'].forEach(function (side) {
+      const team = S.teams[teamOnSide(g, side)].name;
+      const bans = bansOf(g, side).filter(Boolean), picks = picksOf(g, side);
+      lines.push(team + ' (' + side + ')');
+      lines.push('Bans: ' + (bans.length ? bans.join(', ') : '—'));
+      lines.push('Picks: ' + (picks.length ? picks.join(', ') : '—'));
+    });
+    return lines.join('\n');
+  }
+
+  function copyDraft() {
+    const text = draftText(), msg = $('copy-draft-msg'), fallback = $('copy-draft-text');
+    const request = ++copyRequest;
+    fallback.hidden = true;
+    function manualCopy() {
+      if (request !== copyRequest) return;
+      fallback.value = text;
+      fallback.hidden = false;
+      fallback.focus();
+      fallback.select();
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch (e) { /* copy manually */ }
+      if (copied) { fallback.hidden = true; $('copy-draft').focus(); }
+      msg.textContent = copied ? 'Draft copied.' : 'Could not copy automatically. Copy the selected draft text below.';
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { if (request === copyRequest) msg.textContent = 'Draft copied.'; }, manualCopy);
+      } else manualCopy();
+    } catch (e) { manualCopy(); }
+  }
+
   function download(name, text, type) {
     const blob = new Blob([text], { type: type });
     const a = document.createElement('a');
@@ -697,6 +735,7 @@
     });
     $('show-locked').addEventListener('change', function (e) { ui.showLocked = e.target.checked; renderGrid(); });
     $('undo').addEventListener('click', undo);
+    $('copy-draft').addEventListener('click', copyDraft);
     $('reset-game').addEventListener('click', function () {
       if (!confirm('Clear every pick and ban in game ' + (S.current + 1) + '?')) return;
       const g = game(); g.steps = new Array(20).fill(null); g.winner = null; commit();
