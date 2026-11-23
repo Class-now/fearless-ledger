@@ -36,6 +36,8 @@ In Prep, each player gets a pool, one champion per line or comma-separated. Mark
 
 Developed with the Junie coding agent from the Junie CLI, using `.junie/guidelines.md` to keep the lock rules in one function and every change testable headless through `window.__ledger`.
 
+How it was built with Junie: [AI_WORKFLOW.md](AI_WORKFLOW.md)
+
 ## License
 
 MIT. Fearless Ledger is a fan-made coaching tool and is not endorsed by Riot Games. League of Legends and champion names are trademarks of Riot Games, Inc.; no Riot artwork is used.
