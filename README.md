@@ -34,7 +34,7 @@ In Prep, each player gets a pool, one champion per line or comma-separated. Mark
 
 ## Built with JetBrains
 
-Developed in WebStorm with the Junie coding agent, using `.junie/guidelines.md` to keep the lock rules in one function and every change testable headless through `window.__ledger`.
+Developed with the Junie coding agent from the Junie CLI, using `.junie/guidelines.md` to keep the lock rules in one function and every change testable headless through `window.__ledger`.
 
 ## License
 
