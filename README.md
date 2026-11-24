@@ -1,7 +1,7 @@
-# Fearless Ledger
+# Lockout Ledger
 
 A draft board and series planner for **Fearless Draft** in League of Legends, built for coaching staff.
-Under Fearless, every champion picked earlier in a series is gone for the games that follow. Spreadsheets cope badly with that: someone has to cross names out by hand between games, and nobody can see at a glance which player is about to run out of comfort picks. Fearless Ledger does the bookkeeping and turns it into draft advice.
+Under Fearless, every champion picked earlier in a series is gone for the games that follow. Spreadsheets cope badly with that: someone has to cross names out by hand between games, and nobody can see at a glance which player is about to run out of comfort picks. Lockout Ledger does the bookkeeping and turns it into draft advice.
 
 **Use it:** open `index.html` in any modern browser, or the hosted copy on GitHub Pages. No install, no account, no server. Press **Load sample series** in Prep to see a Bo5 already one game in.
 
@@ -9,7 +9,7 @@ Category: **League of Legends: Macro Scouting & Draft Management System** (Modul
 
 ## What it does
 
-| Coaching problem | What Fearless Ledger does |
+| Coaching problem | What Lockout Ledger does |
 |---|---|
 | Tracking which champions are gone | Every pick from earlier games is locked automatically. Locked champions drop out of the grid, or show which team took them and in which game. Hard (both teams), soft (picking team only) and normal drafts are supported. |
 | Running the draft live | A board that follows the tournament order (ban 3, pick 3, ban 2, pick 2 per side), shows whose turn it is, refuses illegal picks, and assigns roles to picks automatically. Type to search, Enter to lock in, Backspace to undo. |
@@ -40,4 +40,4 @@ How it was built with Junie: [AI_WORKFLOW.md](AI_WORKFLOW.md)
 
 ## License
 
-MIT. Fearless Ledger is a fan-made coaching tool and is not endorsed by Riot Games. League of Legends and champion names are trademarks of Riot Games, Inc.; no Riot artwork is used.
+MIT. Lockout Ledger is a fan-made coaching tool and is not endorsed by Riot Games. League of Legends and champion names are trademarks of Riot Games, Inc.; no Riot artwork is used.

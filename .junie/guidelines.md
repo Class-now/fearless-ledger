@@ -1,4 +1,4 @@
-# Junie guidelines — Fearless Ledger
+# Junie guidelines — Lockout Ledger
 
 ## Project
 A Fearless Draft organizer for League of Legends coaching staff. Plain HTML/CSS/JS, no build step, no dependencies, no network calls.

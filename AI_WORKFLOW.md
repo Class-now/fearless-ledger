@@ -1,6 +1,6 @@
 # Building a Fearless Draft tool with an agent: rules that must not drift
 
-Fearless Ledger is my second entry. It is built the same way as my booth game (Skyline Relay): a guidelines file first, small tasks, and a check at the end of every task. A draft tool can fail in a way a game can't, though. When the grid says a champion is free and the advice says it's locked, a coach stops trusting both, and a whole series is lost on one wrong lock. So the work here was mostly about keeping the rules in one place and testing the whole series, not single screens.
+Lockout Ledger is my second entry. It is built the same way as my booth game (Skyline Relay): a guidelines file first, small tasks, and a check at the end of every task. A draft tool can fail in a way a game can't, though. When the grid says a champion is free and the advice says it's locked, a coach stops trusting both, and a whole series is lost on one wrong lock. So the work here was mostly about keeping the rules in one place and testing the whole series, not single screens.
 
 ## 1. The rules went into `.junie/guidelines.md` before any code
 

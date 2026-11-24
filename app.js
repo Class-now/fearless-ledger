@@ -765,15 +765,15 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { done(true); }, function () { done(false); });
       else done(false);
     });
-    $('dl-json').addEventListener('click', function () { download('fearless-series.json', JSON.stringify(S, null, 2), 'application/json'); });
-    $('dl-md').addEventListener('click', function () { download('fearless-report.md', report(), 'text/markdown'); });
+    $('dl-json').addEventListener('click', function () { download('lockout-ledger-series.json', JSON.stringify(S, null, 2), 'application/json'); });
+    $('dl-md').addEventListener('click', function () { download('lockout-ledger-report.md', report(), 'text/markdown'); });
     $('ul-json').addEventListener('change', function (e) {
       const f = e.target.files && e.target.files[0];
       if (!f) return;
       f.text().then(function (t) {
         let o = null;
         try { o = validate(JSON.parse(t)); } catch (err) { o = null; }
-        $('share-msg').textContent = o ? 'Imported.' : 'That file is not a Fearless Ledger series.';
+        $('share-msg').textContent = o ? 'Imported.' : 'That file is not a Lockout Ledger series.';
         if (o) { S = o; commit(); }
       });
       e.target.value = '';
